@@ -27,5 +27,8 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-web-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-webmvc-4.3.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-annotations-2.9.0.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-core-2.9.9.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jackson-databind-2.9.9.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

@@ -21,7 +21,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  	<!-- 交给SpringMVCServlet控制器的welcome方法会处理这个请求 -->
-    <a href="welcome">first mvc welcome</a>
+  	<!-- 交给SpringMVCServlet控制器的welcome方法会处理这个请求，下面的链接是get请求 -->
+  	<br>
+    	<h3>以下用于测试链接的使用</h3>
+    <a href="test/welcome">first mvc welcome</a>
+    	<br>
+    	<h3>以下表单用于测试RequestParam注解的使用</h3>
+    	<form action="test/param" method="post">
+    		name:<input name="name" type="text">
+    		<br>
+    		age:<input name="age" type="text">
+    		<br>
+    		<input type="submit"> 
+    	</form>
+    	<br>
+    	<h3>以下表单用于测试RequestBody注解的使用</h3>
+    	<form action="test/requestbody" method="post">
+    		name:<input name="name" type="text">
+    		<br>
+    		age:<input name="age" type="text">
+    		<br>
+    		homeAddress:<input name="homeAddress" type="text">
+    		<br>
+    		schoolAddress:<input name="schoolAddress" type="text">
+    		<br>
+    		<input type="submit"> 
+    	</form>
+    	<br>
+    	<h3>以下表单用于测试原生ServletAPI的使用</h3>
+    	<form action="test/servlet" method="post">
+    		name:<input name="name" type="text">
+    		<br>
+    		age:<input name="age" type="text">
+    		<br>
+    		<input type="submit"> 
+    	</form>
+    	<br>
+    	<h3>以下用于测试包含参数的页面跳转</h3>
+    	<a href="test/modelandview">modelandview</a>
+    	<br>
+    	<a href="test/modelmap">modelmap</a>
+    	<br>
+    	<a href="test/model">model</a>
+    	<br>
+    	<a href="test/map">map</a>
   </body>
 </html>

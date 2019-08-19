@@ -19,10 +19,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	
   </head>
   
   <body>
-   welcome spring mvc
+  以下是requestScope：<br>
+   ${requestScope.student.name}
+   ${requestScope.student.age}
+   <br>
+    ${requestScope.student2.name}
+   ${requestScope.student2.age}
+   <br>
+    ${requestScope.student3.name}
+   ${requestScope.student3.age}
+   <br>
+    ${requestScope.student4.name}
+   ${requestScope.student4.age}
+   <br>
+   以下是sessionScope：<br>
+    ${sessionScope.student.name}
+   ${sessionScope.student.age}
+   <br>
+    ${sessionScope.student2.name}
+   ${sessionScope.student2.age}
+   <br>
+    ${sessionScope.student3.name}
+   ${sessionScope.student3.age}
+   <br>
+    ${sessionScope.student4.name}
+   ${sessionScope.student4.age}
+   <br>
   </body>
 </html>
