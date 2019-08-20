@@ -65,5 +65,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<a href="test/model">model</a>
     	<br>
     	<a href="test/map">map</a>
+    	<br>
+    	<h3>以下用于测试请求重定向</h3>
+    	<a href="test/redirect">first mvc welcome</a>
+    	<br>
+    	<h3>以下表单用于测试自定义的类型转换（将String转换为Student对象）</h3>
+    	<form action="test/converter" method="post">
+    		格式：name-age-homeAddress-schoolAddress<br>
+    		<input name="student" type="text">
+    		<input type="submit" value="转换"> 
+    	</form>
+    	<br>
   </body>
 </html>

@@ -16,5 +16,25 @@
 		<property name="prefix" value="/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- 以下部分是类型转换需要的配置
+			步骤：1,2,3
+	 -->
+	 <!-- 1.将自定义的类型转换器交给spring容器管理 -->
+	<bean id="myconverter" class="org.zxp.convert.StudentConvert"></bean>
+	 <!-- 2.将自定义类型转换器的bean注册到spring支持的转换服务工厂中 -->
+	<bean id="myconversionservice" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<ref bean="myconverter"/>
+			</set>
+		</property>
+	</bean>
+	<!-- 以下部分是页面跳转的配置
+	path是自己定义的，success是跳转的页面 --> 
+	<mvc:view-controller path="viewcontroller" view-name="success"/>
+	<mvc:default-servlet-handler/>
+	<!-- 数据格式化的配置 -->
+	<bean id=" " class="org.springframework.format.support.FormattingConversionService"></bean>
+	<!-- 3.将myconversionservice注册到‘annotation-driven’标签中 ，将该配置一般放在末尾-->
+	<mvc:annotation-driven conversion-service="myconversionservice"></mvc:annotation-driven>
 </beans>

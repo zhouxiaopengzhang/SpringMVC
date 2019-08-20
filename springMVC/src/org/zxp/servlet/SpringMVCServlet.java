@@ -33,18 +33,22 @@ public class SpringMVCServlet {
 	public String welcome(){
 		return "success";	//默认使用了请求转发的跳转方式
 	}
+	
 	@RequestMapping(value="/param",method=RequestMethod.POST)	//映射
-	public String welcomeParam(@RequestParam String name,@RequestParam String age){
+	public String Param(@RequestParam String name,@RequestParam String age){
 		System.out.println("name:"+name+"\n"+"age:"+age);
 		return "success";	//默认使用了请求转发的跳转方式
 	}
+	
 	/*直接将表单的各个属性填充到Student的s实例中必须满足以下条件：表单中的
 	 * 各个input标签的name属性要与Student类定义的属性名相同*/
-	@RequestMapping(value="/requestbody",method=RequestMethod.POST,produces="application/json")
+	//该方法的功能暂未实现
+	@RequestMapping(value="/requestbody",method=RequestMethod.POST)
 	public String requestBody(@RequestBody Student s){
 		System.out.println(s);
 		return "success";
 	}
+	
 	/*在springMVC中使用原生的ServletAPI的方式：
 	 * 直接在方法参数中写上请求或响应等对象
 	 * */
@@ -62,6 +66,7 @@ public class SpringMVCServlet {
 			e.printStackTrace();}
 		return "success";
 	}
+	
 	/*使用MOdelAndView可以实现向跳转的页面传参
 	 * */
 	@RequestMapping(value="modelandview")
@@ -73,6 +78,7 @@ public class SpringMVCServlet {
 		mv.addObject("student", s);	//相当于调用request.setAttribute()将s存到request域
 		return mv;
 	}
+	
 	/*使用MOdelMap可以实现向跳转的页面传参，
 	 * 第二种传参，在方法传参列表中使用ModelMap
 	 * */
@@ -84,6 +90,7 @@ public class SpringMVCServlet {
 		map.addAttribute("student2", s);//自动将s存到request域
 		return "success";
 	}
+	
 	/*使用MOdelAndView可以实现向跳转的页面传参，
 	 * 第3种传参，在方法传参列表中使用ModelMap
 	 * */
@@ -96,16 +103,39 @@ public class SpringMVCServlet {
 		map.put("student3", s);	//自动将s存到request域
 		return "success";
 	}
+	
 	/*使用MOdelAndView可以实现向跳转的页面传参，
 	 * 第4种传参，在方法传参列表中使用ModelMap
 	 * */
 	@RequestMapping(value="model")
 	public String testModel(Model model){
-		ModelAndView mv=new ModelAndView("success");	//返回到success页面
 		Student s=new Student();
 		s.setName("张三4");
 		s.setAge(12);
 		model.addAttribute("student4", s);	//自动将s存到request域
 		return "success";
+	}
+	
+	/*
+	 * 控制器默认的页面跳转方式是forward即请求转发；下面这个方法将实现请求重定向
+	 */
+	@RequestMapping(value="redirect")
+	public String testRedirect(){
+		//return "success"; //这是隐式请求转发的实现方式
+		//return "forward:/view/success.jsp"; //这是显式请求转发的实现方式
+		return "redirect:/views/success.jsp";	//这是请求重定向的实现方式
+	}
+	
+	/*类型转换：将请求体中的字符串转换为Student*/
+	@RequestMapping(value="converter")
+	public void testConverter(@RequestParam("student") Student s){
+		System.out.println("name:"+s.getName()+" age:"
+		+s.getAge()+" homeAddress:"+s.getHomeAddress()+" schoolAddress:"+s.getSchoolAddress());
+		//由于返回值是void，那么DispatcherServlet控制器会默认去找converter.jsp（没有创建这个页面所以404）
+	}
+	/*数据格式化*/
+	@RequestMapping(value="format")
+	public String testDateFormat(){
+		return "dateFormat";
 	}
 }
