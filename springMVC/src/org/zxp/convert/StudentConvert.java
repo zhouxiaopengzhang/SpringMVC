@@ -7,7 +7,7 @@ public class StudentConvert implements Converter<String,Student>{
 	//方法参数source会获得在浏览器上输入的内容
 	@Override
 	public Student convert(String source) {
-		String[] str=source.split("-");	//用-分割不同的属性
+		String[] str=source.split("--");	//用-分割不同的属性
 		Student s=new Student();
 		s.setName(str[0]);
 		s.setAge(Integer.parseInt(str[1]));

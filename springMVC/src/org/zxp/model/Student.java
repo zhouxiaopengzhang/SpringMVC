@@ -1,7 +1,10 @@
 package org.zxp.model;
 
+import org.springframework.format.annotation.NumberFormat;
+
 public class Student {
 	private String name;
+	@NumberFormat(pattern="###,#")
 	private int age;
 	private String homeAddress;
 	private String schoolAddress;
@@ -32,7 +35,7 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [name=" + name + ", age=" + age + ", homeAddress=" + homeAddress + ", schoolAddress="
-				+ schoolAddress + "]";
+				+ schoolAddress;
 	}
 	
 }

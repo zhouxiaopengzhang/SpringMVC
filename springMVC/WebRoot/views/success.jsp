@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -49,5 +50,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     ${sessionScope.student4.name}
    ${sessionScope.student4.age}
    <br>
+   request作用域程序异常：<br/>
+   <c:forEach items=" ${requestScope.errors}" var="error">
+   	 ${error}
+   </c:forEach>
   </body>
 </html>
